@@ -1,0 +1,86 @@
+/* Side Menu Styling */
+.side-menu {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  position: absolute;
+  height: 100%;
+  left: 0;
+}
+body{
+  font-size: 12px;
+}
+.side-menu .menu-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.side-menu .menu-header h3 {
+  font-size: 20px;
+}
+
+.side-menu .menu-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-menu .menu-list li {
+  padding: 10px;
+}
+
+.side-menu .menu-list li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+}
+
+.side-menu .menu-list li:hover {
+  background-color: #575757;
+}
+
+/* Submenu styling */
+.side-menu .submenu-list {
+  list-style-type: none;
+  padding: 0;
+  display: none;
+}
+
+.side-menu .submenu-list li {
+  padding: 8px;
+  background-color: #444;
+}
+
+.side-menu .submenu-list li a {
+  font-size: 14px;
+}
+
+.side-menu .submenu-list li:hover {
+  background-color: #666;
+}
+
+/* Dragging Style for the Block Manager */
+.gjs-block .fa {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Additional Styling for Buttons and Links */
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#simple-tabpanel-0 .MuiBox-root{
+  padding: 0 0px 0 12px;
+}
