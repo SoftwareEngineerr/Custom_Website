@@ -11,11 +11,14 @@ import FeaturedCollection from './components/featuredcollection';
 import CollectionList from './components/collectionlist';
 import Footer from './components/footer';
 import { IconAddressBook, IconBorderInner, IconBrandAppstore, IconSettings } from '@tabler/icons';
-import AddSection from '../../../components/addsection';
+import AddSection from './addsection';
 import RichText from './components/richtext';
 import ImageWithText from './components/imageWithText';
 import ImageBanner from './components/imageBanner';
 import Contact from './components/contact';
+import Email_signup from './components/emailsignup';
+import EmailSignup from './components/emailsignup';
+import Multirow from './components/multirow';
 
 
 const SidebarItems = () => {
@@ -178,6 +181,23 @@ function a11yProps(index) {
                   </List>
                   )
                 }
+                {
+                  item.category == "Email_signup" && (
+                  <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
+                    <EmailSignup id={ind} />
+                  </List>
+                  )
+                }
+
+                {
+                  item.category == "Multirow" && (
+                  <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
+                    <Multirow id={ind} />
+                  </List>
+                  )
+                }
+
+
                 
 
 

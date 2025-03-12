@@ -4,7 +4,7 @@ import { Button, Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import { Icon3dRotate, IconBorderInner, IconMessage, IconMessageCircle, IconPageBreak, IconPlaylistAdd } from '@tabler/icons'
 import { useDispatch } from 'react-redux'
-import { AddSectionAction } from '../../redux/actions/addsection/addsection'
+import { AddSectionAction } from '../../../../redux/actions/addsection/addsection'
 
 const  AddSection = (props) => {
     const dispatch = useDispatch()
@@ -137,11 +137,77 @@ const  AddSection = (props) => {
         if(getparam == "Contact"){
             data = {
                 category:"Contact",
-                heading_Size: "0",
+                heading_Size: "2",
                 heading: 'Contact Form',
                 first_button: 'Button Label',
                 button_TL_Padding: "2",
                 button_LR_Padding: "2",
+                top_Padding: 0,
+                bottom_Padding: 0,
+
+            }
+        }
+        if(getparam == "Email signup"){
+            data = {
+                category:"Email_signup",
+                heading_Size: "2",
+                heading: 'Subscribe to our emails',
+                description: 'Be the first to know about new collections and exclusive offers.',
+                top_Padding: 0,
+                bottom_Padding: 0,
+
+            }
+        }
+        if(getparam == "Multicolumn"){
+            data = {
+                category:"MultiColumn",
+                image: "",
+                product: '',
+                collection: "",
+                heading: 'Multimedia collage',
+                heading_Size: "2",
+                Desktop_Layout: 0,
+                top_Padding: 0,
+                bottom_Padding: 0,
+
+            }
+        }
+        if(getparam == "Multirow"){
+            data = {
+                category:"Multirow",
+                imageheight: 3,
+                imagewidth: 2,
+                heading_Size: 2,
+                textstyle: 1,
+                buttonstyle: 1,
+                button_TL_Padding: "2",
+                button_LR_Padding: "2",
+
+                desktop_content_position: 1,
+                content_Alignment: 0,
+                desktop_image_placement: 1,
+
+                firstimage: "",
+                firstcaption: 'Caption.',
+                firstheading: 'Row',
+                firstdescription: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                firstbutton: 'Button label',
+                firstlink: '',
+
+                secondimage: "",
+                secondcaption: 'Caption.',
+                secondheading: 'Row',
+                seconddescription: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                secondbutton: 'Button label',
+                secondlink: '',
+
+                thirdimage: "",
+                thirdcaption: 'Caption.',
+                thirdheading: 'Row',
+                thirddescription: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                thirdbutton: 'Button label',
+                thirdlink: '',
+
                 top_Padding: 0,
                 bottom_Padding: 0,
 

@@ -10,6 +10,9 @@ import RichText from '../components/richtext';
 import ImageWithText from '../components/imageWithText';
 import Image_Banner from '../components/image_Banner';
 import Contact from '../components/Contact';
+import EmailSignup from '../components/EmailSignup';
+import MultiColumn from '../components/MultiColumn';
+import Multirow from '../components/Multirow';
 
 const Form = props => {
     // Fetch state from Redux store
@@ -285,6 +288,112 @@ const Form = props => {
                         )}
                     </div>
                 )
+                ||
+                item.category === "Email_signup" && (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDrop={(e) => handleDrop(e, index)}
+                        onDragOver={handleDragOver}
+                        onClick={() => handleItemClick(index)} // Select item on click
+                        style={{
+                            cursor: "move",
+                            position: "relative",
+                        }}
+                    >
+                        <EmailSignup  getid={index} />
+
+                        {selectedItem === index && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-25px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    backgroundColor: "darkblue",
+                                    color: "white",
+                                    padding: "5px",
+                                    borderRadius: "5px",
+                                }}
+                            >
+                                Header
+                            </div>
+                        )}
+                    </div>
+                )
+                ||
+                item.category === "MultiColumn" && (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDrop={(e) => handleDrop(e, index)}
+                        onDragOver={handleDragOver}
+                        onClick={() => handleItemClick(index)} // Select item on click
+                        style={{
+                            cursor: "move",
+                            position: "relative",
+                        }}
+                    >
+                        <MultiColumn  getid={index} />
+
+                        {selectedItem === index && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-25px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    backgroundColor: "darkblue",
+                                    color: "white",
+                                    padding: "5px",
+                                    borderRadius: "5px",
+                                }}
+                            >
+                                Header
+                            </div>
+                        )}
+                    </div>
+                )
+                ||
+                item.category === "Multirow" && (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDrop={(e) => handleDrop(e, index)}
+                        onDragOver={handleDragOver}
+                        onClick={() => handleItemClick(index)} // Select item on click
+                        style={{
+                            cursor: "move",
+                            position: "relative",
+                        }}
+                    >
+                        <Multirow  getid={index} />
+
+                        {selectedItem === index && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-25px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    backgroundColor: "darkblue",
+                                    color: "white",
+                                    padding: "5px",
+                                    borderRadius: "5px",
+                                }}
+                            >
+                                Header
+                            </div>
+                        )}
+                    </div>
+                )
+
+                
+
+                
                 
 
                 

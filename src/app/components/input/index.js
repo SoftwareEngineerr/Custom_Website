@@ -9,8 +9,11 @@ const AppInput = (props) => {
           <Input
         name={props.name} 
         id={props.id} 
+        placeholder={props.data}
+        required={props.required}
+        type={props.type}
         // onChange={(e)=>props.onChange( e , e)} 
-        value={selectvalue}
+        // value={selectvalue}
         />
     </div>
   )

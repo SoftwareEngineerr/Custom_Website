@@ -343,7 +343,7 @@ export const Main = ()=> {
             
             
             {data:'Heading Size', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
-            {data: 'Heading Size', type: 'text', required: true, name: 'heading_Size', feildtype:'menuItemSelect',selectitems:['Small','Medium','Large'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            {data: 'Heading Size', type: 'text', required: true, name: 'heading_Size', feildtype:'menuItemSelect',selectitems:['Large','Medium','Small'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
             { feildtype:'space'},
 
 
@@ -396,6 +396,261 @@ export const Main = ()=> {
             
             
         ]
+    },
+    Email:{
+        menu:[
+            
+
+            
+            
+            {data:'Heading Size', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'heading_Size', feildtype:'menuItemSelect',selectitems:['Large','Medium','Small'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Content"},
+
+            {data:'Heading', feildtype:'label' , lg: 12 , md: 12, sm: 12, xs: 12},
+            { feildtype:'space'},
+            {data: 'Input', type: 'text', required: true, name: 'heading', feildtype:'text', lg: 12 , md: 12, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Paragraph', feildtype:'label' , lg: 12 , md: 12, sm: 12, xs: 12},
+            { feildtype:'space'},
+            {data: 'Input', type: 'text', required: true, name: 'description', feildtype:'text', lg: 12 , md: 12, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+          
+
+
+            
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Section Padding"},
+
+            {data:'Top Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Top Padding', type: 'text',  max:100,min:0,step:2, required: true, name: 'top_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+
+            {data:'Bottom Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Bottom Padding', type: 'text', required: true, name: 'bottom_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            
+            
+        ]
+    },
+    MultiColumn:{
+        menu:[
+            
+
+            
+            
+            {data:'Heading Size', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'heading_Size', feildtype:'menuItemSelect',selectitems:['Large','Medium','Small'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Content"},
+
+            {data:'Heading', feildtype:'label' , lg: 12 , md: 12, sm: 12, xs: 12},
+            { feildtype:'space'},
+            {data: 'Input', type: 'text', required: true, name: 'heading', feildtype:'text', lg: 12 , md: 12, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+          
+            {data:'Desktop image placement', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'Desktop_Layout', feildtype:'menuItemSelect',selectitems:['Image First','Image Second'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Section Padding"},
+
+            {data:'Top Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Top Padding', type: 'text',  max:100,min:0,step:2, required: true, name: 'top_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+
+            {data:'Bottom Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Bottom Padding', type: 'text', required: true, name: 'bottom_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            
+            
+        ]
+    },
+    Multirow:{
+        menu:[
+            
+
+            
+            
+            {data:'Image height', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'imageheight', feildtype:'menuItemSelect',selectitems:['Adapt to Image','Small','Medium','Large'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Desktop Image Width', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'imagewidth', feildtype:'menuItemSelect',selectitems:['Large','Medium','Small'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Heading Size', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'heading_Size', feildtype:'menuItemSelect',selectitems:['Large','Medium','Small'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Desktop Content Position', feildtype:'label' , lg: 12 , md: 12, sm: 12, xs: 12},
+            { feildtype:'space'},
+            {name: 'textstyle', feildtype:'tabs',items:['Body','Subtitle'], lg: 12 , md: 12, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Button Features"},
+
+            {data:'Button Style', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'buttonstyle', feildtype:'menuItemSelect',selectitems:['Solid Button','Outline Button'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Top & Bottom Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Top Padding', type: 'text',  max: 30 ,min:0,step:2, required: true, name: 'button_TL_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Right & Left Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Bottom Padding', max: 30 ,min:0,step:2,  type: 'text', required: true, name: 'button_LR_Padding', feildtype:'slider', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Content Customization"},
+            
+            {data:'Desktop Content Position', feildtype:'label' , lg: 12 , md: 12, sm: 12, xs: 12},
+            { feildtype:'space'},
+            {name: 'desktop_content_position', feildtype:'tabs',items:['Top','Middle','Bottom'], lg: 12 , md: 12, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Desktop content alignment', feildtype:'label' , lg: 12 , md: 12, sm: 12, xs: 12},
+            { feildtype:'space'},
+            {name: 'content_Alignment', feildtype:'tabs',items:['Left','Center','Right'], lg: 12 , md: 12, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Desktop image placement', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Heading Size', type: 'text', required: true, name: 'desktop_image_placement', feildtype:'menuItemSelect',selectitems:['Alternate from left','Alternate from Right','Aligned Left','Aligned Right'], lg: 6 , md: 6, sm: 12, xs: 12, lang: 'en'},
+            { feildtype:'space'},
+            
+
+
+
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"First Row"},
+
+            {data:'Caption', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'firstcaption', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Heading', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'firstheading', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Description', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'firstdescription', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Description', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'firstdescription', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Button Heading', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'firstbutton', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Link', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'firstlink', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Second Row"},
+
+            {data:'Caption', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'secondcaption', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Heading', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'secondheading', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Description', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'seconddescription', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Description', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'seconddescription', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Button Heading', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'secondbutton', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Link', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'secondlink', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+
+            
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Third Row"},
+
+            {data:'Caption', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'thirdcaption', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Heading', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'thirdheading', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Description', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'thirddescription', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Description', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'thirddescription', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Button Heading', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'thirdbutton', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            {data:'Link', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Input', type: 'text', required: true, name: 'thirdlink', feildtype:'text', lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            
+
+            
+
+
+            {feildtype:"line"},
+            {feildtype:"heading" , data:"Section Padding"},
+
+            {data:'Top Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Top Padding', type: 'text',  max:100,min:0,step:2, required: true, name: 'top_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+
+            {data:'Bottom Padding', feildtype:'label' , lg: 6 , md: 6, sm: 6, xs: 6},
+            {data: 'Bottom Padding', type: 'text', required: true, name: 'bottom_Padding', feildtype:'slider',selectitems:['Adpat to Image' ,'Portrait','Square'], lg: 6 , md: 6, sm: 6, xs: 6, lang: 'en'},
+            { feildtype:'space'},
+
+            
+            
+        ] 
     }
   
 }

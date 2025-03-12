@@ -8,8 +8,8 @@ import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import { Main } from '../../../../../constant';
 import CustomMenu from '../../../../../components/selectitem';
 
-const MultiColumn = (props) => {
-        const [data , setData ] = useState(Main().MultiColumn.menu)
+const Multirow = (props) => {
+        const [data , setData ] = useState(Main().Multirow.menu)
       return (
         <div>
             <Accordion>
@@ -18,7 +18,7 @@ const MultiColumn = (props) => {
               aria-controls="panel1-content"
               id="panel1-ImageBanner"
             >
-              <Typography component="span">MultiColumn</Typography>
+              <Typography component="span">Multirow</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Grid container>
@@ -30,6 +30,6 @@ const MultiColumn = (props) => {
       )
 }
 
-MultiColumn.propTypes = {}
+Multirow.propTypes = {}
 
-export default MultiColumn
+export default Multirow

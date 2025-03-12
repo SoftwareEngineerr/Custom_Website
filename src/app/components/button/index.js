@@ -5,7 +5,7 @@ import { Button } from '@mui/material'
 const CustomButton = props => {
   return (
     <div>
-        <Button sx={props.getstyle}>
+        <Button sx={props.getstyle} type={props.type}>
             {props.data}
         </Button>
     </div>
