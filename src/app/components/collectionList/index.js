@@ -5,10 +5,13 @@ import { useSelector } from 'react-redux';
 
 const Collection_List = props => {
   const collection = useSelector((state)=>state.Section[props.getid]);
-  const [numbers , setNumbers] = useState(Array.from({ length: collection.columns_on_desktop_count }, (_, index) => index + 1)); // Create an array [1, 2, 3, 4, 5]
 
-    // console.log(collection)
-    const [columns_on_desktop , setColumns_on_desktop] = useState(12 / collection.columns_on_desktop.length)
+      const [numbers , setNumbers] = useState(collection && (Array.from({ length: collection.columns_on_desktop_count }, (_, index) => index + 1))); // Create an array [1, 2, 3, 4, 5]
+    
+        // console.log(collection)
+        const [columns_on_desktop , setColumns_on_desktop] = useState(12 / collection.columns_on_desktop.length)
+        // console.log(Array.from({ length: collection.columns_on_desktop_count }, (_, index) => index + 1))
+    
     useEffect(()=>{
         // columns_on_desktop
         // console.log(collection)
@@ -16,7 +19,6 @@ const Collection_List = props => {
         // console.log(12 / )
         setColumns_on_desktop(12 / collection.columns_on_desktop_count)
     },[collection.columns_on_desktop_count])
-    // console.log(Array.from({ length: collection.columns_on_desktop_count }, (_, index) => index + 1))
   return (
     <Box
     sx={{

@@ -11,12 +11,17 @@ import ImageWithText from '../components/imageWithText';
 import Image_Banner from '../components/image_Banner';
 import Contact from '../components/Contact';
 import EmailSignup from '../components/EmailSignup';
-import MultiColumn from '../components/MultiColumn';
 import Multirow from '../components/Multirow';
+import FeaturedCollection from '../components/FeaturedCollection';
+import College from '../components/College';
+import CustomAppMulticolumn from '../components/CustomAppMulticolumn';
+import Collapible_content from '../components/Collapible_content';
+import ProductListPage from '../components/ProductListPage';
 
 const Form = props => {
     // Fetch state from Redux store
     const itemsFromRedux = useSelector((state) => state.Section);
+    const PageChanger = useSelector((state) => state.PageChanger);
     const dispatch = useDispatch();
 
     // Initialize state using items from Redux store
@@ -27,9 +32,14 @@ const Form = props => {
     const handleDragStart = (e, index) => {
         e.dataTransfer.setData("draggedIndex", index);
     };
+    useEffect(()=>{
+        setItems([])
+        console.log('1')
+    },[PageChanger])
 
     useEffect(()=>{
       setItems(itemsFromRedux)
+      console.log('2')
     },[itemsFromRedux])
 
     // Handle drop event
@@ -62,7 +72,8 @@ const Form = props => {
 
     return (
         <div>
-            {items.map((item, index) => (
+            
+            {items != 'plp' && items != 'pdp' && items != '' ? items.map((item, index) => (
                 item.category === "header" && (
                     <div
                         key={index}
@@ -133,6 +144,40 @@ const Form = props => {
                         }}
                     >
                         <Collection_List  getid={index} />
+
+                        {selectedItem === index && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-25px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    backgroundColor: "darkblue",
+                                    color: "white",
+                                    padding: "5px",
+                                    borderRadius: "5px",
+                                }}
+                            >
+                                Header
+                            </div>
+                        )}
+                    </div>
+                )
+                ||
+                item.category === "Featured_collection" && (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDrop={(e) => handleDrop(e, index)}
+                        onDragOver={handleDragOver}
+                        onClick={() => handleItemClick(index)} // Select item on click
+                        style={{
+                            cursor: "move",
+                            position: "relative",
+                        }}
+                    >
+                        <FeaturedCollection  getid={index} />
 
                         {selectedItem === index && (
                             <div
@@ -323,7 +368,7 @@ const Form = props => {
                     </div>
                 )
                 ||
-                item.category === "MultiColumn" && (
+                item.category === "College" && (
                     <div
                         key={index}
                         draggable
@@ -336,7 +381,7 @@ const Form = props => {
                             position: "relative",
                         }}
                     >
-                        <MultiColumn  getid={index} />
+                        <College  getid={index} />
 
                         {selectedItem === index && (
                             <div
@@ -390,6 +435,74 @@ const Form = props => {
                         )}
                     </div>
                 )
+                ||
+                item.category === "Multicolumn" && (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDrop={(e) => handleDrop(e, index)}
+                        onDragOver={handleDragOver}
+                        onClick={() => handleItemClick(index)} // Select item on click
+                        style={{
+                            cursor: "move",
+                            position: "relative",
+                        }}
+                    >
+                        <CustomAppMulticolumn  getid={index} />
+
+                        {selectedItem === index && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-25px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    backgroundColor: "darkblue",
+                                    color: "white",
+                                    padding: "5px",
+                                    borderRadius: "5px",
+                                }}
+                            >
+                                Header
+                            </div>
+                        )}
+                    </div>
+                ) ||
+                item.category === "Collapible_content" && (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDrop={(e) => handleDrop(e, index)}
+                        onDragOver={handleDragOver}
+                        onClick={() => handleItemClick(index)} // Select item on click
+                        style={{
+                            cursor: "move",
+                            position: "relative",
+                        }}
+                    >
+                        <Collapible_content  getid={index} />
+
+                        {selectedItem === index && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-25px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    backgroundColor: "darkblue",
+                                    color: "white",
+                                    padding: "5px",
+                                    borderRadius: "5px",
+                                }}
+                            >
+                                Header
+                            </div>
+                        )}
+                    </div>
+                )
+                
 
                 
 
@@ -399,7 +512,18 @@ const Form = props => {
                 
 
                 
-            ))}
+            ))
+        :
+        items == 'plp' ?
+            <>
+                <ProductListPage />
+            </>
+            :
+            items == 'pdp' ?
+            items
+            :
+            null
+        }
         </div>
     );
 };

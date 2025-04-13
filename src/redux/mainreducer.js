@@ -6,15 +6,18 @@ import ShowModal from './reducer/showmodal';
 // import Theme from './reducer/theme/theme'
 import WebsiteChanger from './reducer/websitechange/index';
 import Section from './reducer/section/section';
+import PageChanger from './reducer/page/page';
 
 
 export const rootreducer = combineReducers({
-    Loader: LoaderReducer,
     Api : Api,
     // Auth: Auth,
     Modal:ShowModal,
     // Uploadimage: Uploadimage,
     WebsiteChanger: WebsiteChanger,
-    Section: Section
+    Section: Section,
+    PageChanger:PageChanger,
+    Loader: LoaderReducer,
+    Modal:ShowModal,
   });
   

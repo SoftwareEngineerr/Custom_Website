@@ -8,87 +8,22 @@ const initialState = {
     Login:`${web}login`,
     Web:`${web}WebSrn`,
 
-    StudentRegistation: `${web}dashboard/studentReg`,
-    TeacherRegistation: `${web}dashboard/teacherReg`,
-    Imagelink: `${web}dashboard/createFolder`,
-    //Studnets suggestion api
-    studentsuggestion: `${web}dashboard/studentsuggestion`,
-    teachersuggestion: `${web}dashboard/teachersuggestion`,
-    imageServer: `${web}public/`,
-    // Customize Rolls
-    webroles: `${web}dashboard/webRoles`,
-    veiwroles: `${web}dashboard/veiwroles`,
-    assignroles: `${web}dashboard/assignroles/`,
-    //Private Messages
-    privateMessage: `${web}dashboard/privateMessage`,
-    veiwMessages: `${web}dashboard/veiwMessages`,
-    //Group Messages
-    Allmembersmessage: `${web}dashboard/Allmembersmessage`,
-    veiwAllmemberMessages: `${web}dashboard/veiwAllmemberMessages`,
-    //selected messages
-    selectedmessage:`${web}dashboard/selectedmessages`,
-    //annnouncmentholidays
-    annnouncmentholidays: `${web}dashboard/annnouncmentholidays`,
-    //public announcement
-    publicannouncemnet: `${web}dashboard/publicannnouncment`,
-    addpublicannouncemnet: `${web}dashboard/addpublicannnouncment`,
-    switchpublicannouncemnet: `${web}dashboard/switch`,
-   
-    // expense
-    expense: `${web}dashboard/expense`,
-    veiwexpense: `${web}dashboard/veiwexpense`,
-    //income
-    income: `${web}dashboard/income`,
-    //showlatefee
-    showlatefee: `${web}dashboard/showlatefee`,
-    //activation
-        // student
-    studentactivationshow: `${web}dashboard/activition/student`,
-    studentActivitionInsertFee: `${web}dashboard/activition/insertfee`,
-    studentActivitionUpdateActiviation: `${web}dashboard/activition/updateActiviation`,
-        // teacher 
-    teacheractivationshow: `${web}dashboard/activition/teacher`,
-    teacherActivitionInsertFee: `${web}dashboard/activition/teacherinsertfee`,
-    teacherActivitionUpdateActiviation: `${web}dashboard/activition/teacherupdateActiviation`,
+    ShowAllPage: `${web}CustomizeWebsite/show_all_page`,
+    ShowPage: `${web}CustomizeWebsite/show_page`,
+    EditPage: `${web}CustomizeWebsite/Edit_page`,
+    Create_page: `${web}CustomizeWebsite/Create_page`,
 
-    udpateStudentReg: `${web}dashboard/update/studentreg`,
-    udpateTeacherReg: `${web}dashboard/update/teacherReg`,
-
-    //inventory
-    addProduct: `${web}dashboard/inventory/add`,
-    showProduct: `${web}dashboard/inventory/show`,
-    deleteProduct: `${web}dashboard/inventory/delete`,
-    eidtProduct: `${web}dashboard/inventory/edit`,
+    Imagelink: `${web}CustomizeWebsite/createFolder`,
+    ShowImage: `${web}CustomizeWebsite/showimages`,
 
 
-    // Khata
-    addKhata: `${web}dashboard/khata/add`,
-    showKhata: `${web}dashboard/khata/show`,
-    deleteKhata: `${web}dashboard/khata/delete`,
-    eidtKhata: `${web}dashboard/khata/edit`,
-    khataSuggest : `${web}dashboard/Khata/suggest`,
+    // show menu 
+    ShowMenu : `${web}CustomizeWebsite/showmenu`,
+    Addmenu: `${web}CustomizeWebsite/menu`,
+    DeleteMenu: `${web}CustomizeWebsite/deletemenu`,
 
-    ShowPersonData:`${web}dashboard/ShowPersonData`,
-
-    // product Availability
-    productshow: `${web}dashboard/Product_Availabe/show`,
-    hintProduct:`${web}dashboard/Product/show`,
-    productAdd: `${web}dashboard/Product/add`,
-    showQuantity: `${web}dashboard/quantity/show`,
-    productAvailabilityhints:`${web}dashboard/Product_Availabe_hints/show`,
-    product_History: `${web}dashboard/Product_History`,
-    all_product_History: `${web}dashboard/All_Product_History`,
-
-
-    //Bills
-    create_Bill: `${web}dashboard/Create_Bill`,
-    track_bill: `${web}dashboard/Track_bill`,
-    userPay: `${web}dashboard/userPay`,
-    track_Bill_Id: `${web}dashboard/Track_Bill_Id`,
-    return_Bill: `${web}dashboard/Return_Bill`,
-
-    dashboardTotal: `${web}dashboard/total`
-
+    //sub menu
+    addsubmenu : `${web}CustomizeWebsite/submenu`,
 };
 
 const Api = (state = initialState) => {

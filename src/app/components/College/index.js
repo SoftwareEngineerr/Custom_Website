@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux';
 import { Box, Grid, Typography } from '@mui/material';
 
-const MultiColumn = props => {
+const College = props => {
         const obj = useSelector((state)=>state.Section[props.getid]);
   return (
     <Box
@@ -76,6 +76,6 @@ const MultiColumn = props => {
   )
 }
 
-MultiColumn.propTypes = {}
+College.propTypes = {}
 
-export default MultiColumn
+export default College

@@ -53,7 +53,12 @@ const Section = (state = initialState, action) => {
             case "ADD_SECTION_TO_APP":
             return [ ...state, 
              action.data
-            ];  
+            ]; 
+            case "GET_SECTION_TO_APP":
+            return action.data
+            
+            
+            
         default:
             return state;
     }

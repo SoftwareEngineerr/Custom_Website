@@ -4,6 +4,12 @@ export const AddSectionAction = (getdata)=>{
     }
 }
 
+export const GetSectionAction = (getdata)=>{
+    return(dispatch)=>{
+        dispatch({type:"GET_SECTION_TO_APP" , data:getdata})
+    }
+}
+
 
 export const SelectIndex = (getdata)=>{
     return(dispatch)=>{

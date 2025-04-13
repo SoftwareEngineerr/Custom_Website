@@ -6,6 +6,9 @@ import { Router } from "./routes/routes";
 import { Themefunc } from './theme/DefaultColors';
 
 import "./App.css"
+import { FirstTimeWebSrn } from './hooks/FirstTimeWebSrn/FirstTimeWebSrn';
+import Loader from "./components/loader/loader";
+import Popup from "./components/popup/popup";
 
 // import "bootstrap/dist/css/bootstrap"
 
@@ -24,7 +27,10 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
+      <FirstTimeWebSrn />
         <CssBaseline />
+        <Loader />
+        <Popup />
       <div>
         {routing}
       </div>

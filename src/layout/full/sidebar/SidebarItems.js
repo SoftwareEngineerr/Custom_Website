@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTheme } from '@emotion/react';
 import Header from './components/header';
 import SlideShow from './components/slideshow';
-import MultiColumn from './components/multicolumn';
+import College from './components/College';
 import FeaturedCollection from './components/featuredcollection';
 import CollectionList from './components/collectionlist';
 import Footer from './components/footer';
@@ -19,6 +19,11 @@ import Contact from './components/contact';
 import Email_signup from './components/emailsignup';
 import EmailSignup from './components/emailsignup';
 import Multirow from './components/multirow';
+import CustomMulticolumn from './components/customMulticolumn';
+import Collapible_content from './components/Collapible_content';
+import CustomMenu from '../../../menu';
+import Fileimage from '../../../components/selectitem/components/image/Fileimage'
+import Plp from './components/Plp/Plp';
 
 
 const SidebarItems = () => {
@@ -27,6 +32,13 @@ const SidebarItems = () => {
   const pathDirect = pathname;
   const dispatch = useDispatch();
   const data = useSelector((state)=>state.Section)
+  const page = useSelector((state)=>state.PageChanger)
+  const [getpage , setGetpage] = useState(page)
+  
+
+  useEffect(()=>{
+    setGetpage(page)
+  },[page])
 
 
   const makeseconds = Math.random();
@@ -106,14 +118,33 @@ function a11yProps(index) {
       </Box>
         <Box sx={{marginLeft: "50px"}}>
       <CustomTabPanel value={value} index={0}>
-
             {
-              data != undefined ? data.map((item, ind)=>
-                <>
+              
+              page.pagechecker == 'pdp'  ? 
+              page.pagechecker
+              :
+              page.pagechecker == 'plp' ?
+              <>
+              welcome
+              </>
+              :
+              null
+            }
+            {
+              data != undefined && data != 'pdp' && data != 'plp' ? data.map((item, ind)=>
+                <div key={ind}>
                 {
                   item.category == "header" && (
                     <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
                       <Header id={ind} />
+                    </List>
+                  )
+
+                }
+                 {
+                  item.category == "Plp" && (
+                    <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
+                      <Plp id={ind} />
                     </List>
                   )
 
@@ -133,14 +164,14 @@ function a11yProps(index) {
                   )
                 }
                 {
-                  item.category == "MultiColumn" && (
+                  item.category == "College" && (
                   <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
-                    <MultiColumn id={ind} />
+                    <College id={ind} />
                   </List>
                   )
                   }
                   {
-                    item.category == "FeaturedCollection" && (
+                    item.category == "Featured_collection" && (
                   <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
                     <FeaturedCollection id={ind} />
                   </List>
@@ -197,13 +228,30 @@ function a11yProps(index) {
                   )
                 }
 
+                {
+                  item.category == "Multicolumn" && (
+                  <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
+                    <CustomMulticolumn id={ind} />
+                  </List>
+                  )
+                }
+
+                {
+                  item.category == "Collapible_content" && (
+                  <List sx={{ pt: 0 }} key={ind} className="sidebarNav">
+                    <Collapible_content id={ind} />
+                  </List>
+                  )
+                }
+
+
 
                 
 
 
 
 
-                </>
+                </div>
               )
               :
               null
@@ -211,10 +259,18 @@ function a11yProps(index) {
 
       </CustomTabPanel>
       <CustomTabPanel sx={{padding: "0"}} value={value} index={1}>
-        <AddSection />
+        {console.log(getpage)}
+      {
+        getpage.pagechecker != '' || getpage.pagechecker == 'plp' ||  getpage.pagechecker == 'pdp' ?
+        null
+        :
+        <>
+          <AddSection />
+        </>
+        }
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <CustomMenu />
       </CustomTabPanel>
         </Box>
     </Box>

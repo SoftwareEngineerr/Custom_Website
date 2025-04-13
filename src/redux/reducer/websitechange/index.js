@@ -20,14 +20,6 @@ const WebsiteChanger = (state = initialState, action) => {
             return { ...state, menucolor: action.Color };
         case 'CHANGE_MENU_SIZE':
             return { ...state, display: action.Size };
-        // case 'CHANGE_LOGO_POSITION':
-        //     return {
-        //         ...state,
-        //         header: {
-        //             ...state.header,  // Spread the existing header properties
-        //             logoposition: action.LogoPosition // Update the logoposition
-        //         }
-        //     };
         case 'AddSectionToApp' :
             console.log(state)
             return {

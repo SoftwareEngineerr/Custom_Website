@@ -41,7 +41,7 @@ const  AddSection = (props) => {
             data = {
                 category:"header",
                 data: "item",
-                Logo: "1",
+                Logo: 1,
                 // 1 Top Left
                 // 2 Top Center
                 // 3 Middle Left
@@ -54,6 +54,29 @@ const  AddSection = (props) => {
             data = {
                 category:"slideshow",
                 data: "item 1",
+            }
+        }
+        if(getparam == "Featured collection"){
+            data = {
+                category:"Featured_collection",
+                heading:"Featured Collection",
+                bold:0,
+                italic: 0,
+                data: "item 1",
+                heading_size: 0,
+                padding_bottom_heading: 0,
+                Top_Padding: 2,
+                Bottom_Padding: 2,
+                button: "off",
+                mobile_Layout: 1,
+                top_Padding: 0,
+                bottom_Padding: 0,
+                columns_on_desktop_count: 2,
+                columns_on_desktop: [
+                    {data: "wellcome" , image:"image"},
+                    {data: "wellcome" , image:"image"},
+                    // {data: "wellcome" , image:"image"}
+                ]
             }
         }
         if(getparam == "Collection List"){
@@ -71,7 +94,7 @@ const  AddSection = (props) => {
                 mobile_Layout: 1,
                 top_Padding: 0,
                 bottom_Padding: 0,
-                columns_on_desktop_count: "2",
+                columns_on_desktop_count: 2,
                 columns_on_desktop: [
                     {data: "wellcome" , image:"image"},
                     {data: "wellcome" , image:"image"},
@@ -91,8 +114,8 @@ const  AddSection = (props) => {
                 heading_size: "1",
                 description: "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
                 button: "button label",
-                button_TL_Padding: "2",
-                button_LR_Padding: "2"
+                button_TL_Padding: 2,
+                button_LR_Padding: 2
 
             }
         }
@@ -108,8 +131,8 @@ const  AddSection = (props) => {
                 heading: 'Image with text',
                 description: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
                 button: 'Button Label',
-                button_TL_Padding: "2",
-                button_LR_Padding: "2",
+                button_TL_Padding: 2,
+                button_LR_Padding: 2,
                 top_Padding: 0,
                 bottom_Padding: 0,
 
@@ -127,8 +150,8 @@ const  AddSection = (props) => {
                 description: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
                 first_button: 'Button Label',
                 second_button: 'Button Label',
-                button_TL_Padding: "2",
-                button_LR_Padding: "2",
+                button_TL_Padding: 2,
+                button_LR_Padding: 2,
                 top_Padding: 0,
                 bottom_Padding: 0,
 
@@ -137,11 +160,11 @@ const  AddSection = (props) => {
         if(getparam == "Contact"){
             data = {
                 category:"Contact",
-                heading_Size: "2",
+                heading_Size: 2,
                 heading: 'Contact Form',
                 first_button: 'Button Label',
-                button_TL_Padding: "2",
-                button_LR_Padding: "2",
+                button_TL_Padding: 2,
+                button_LR_Padding: 2,
                 top_Padding: 0,
                 bottom_Padding: 0,
 
@@ -150,7 +173,7 @@ const  AddSection = (props) => {
         if(getparam == "Email signup"){
             data = {
                 category:"Email_signup",
-                heading_Size: "2",
+                heading_Size: 2,
                 heading: 'Subscribe to our emails',
                 description: 'Be the first to know about new collections and exclusive offers.',
                 top_Padding: 0,
@@ -158,14 +181,14 @@ const  AddSection = (props) => {
 
             }
         }
-        if(getparam == "Multicolumn"){
+        if(getparam == "College"){
             data = {
-                category:"MultiColumn",
+                category:"College",
                 image: "",
                 product: '',
                 collection: "",
                 heading: 'Multimedia collage',
-                heading_Size: "2",
+                heading_Size: 2,
                 Desktop_Layout: 0,
                 top_Padding: 0,
                 bottom_Padding: 0,
@@ -180,8 +203,8 @@ const  AddSection = (props) => {
                 heading_Size: 2,
                 textstyle: 1,
                 buttonstyle: 1,
-                button_TL_Padding: "2",
-                button_LR_Padding: "2",
+                button_TL_Padding: 2,
+                button_LR_Padding: 2,
 
                 desktop_content_position: 1,
                 content_Alignment: 0,
@@ -213,7 +236,75 @@ const  AddSection = (props) => {
 
             }
         }
-        console.log(data , getparam)
+        if(getparam == "Multicolumn"){
+            data = {
+                category:"Multicolumn",
+                heading: 'MutliColumns',
+                heading_Size: 2,
+                imagewidth: 2,
+                number_of_columns: 2,
+                columns_Alignment: 0,
+                button: 'Button label',
+                buttonlink: '',
+                button_TL_Padding: 2,
+                button_LR_Padding: 2,
+
+
+                firstimage: "",
+                firstheading: 'Row',
+                firstdescription: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+
+                secondimage: "",
+                secondheading: 'Row',
+                seconddescription: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+
+                thirdimage: "",
+                thirdheading: 'Row',
+                thirddescription: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+
+                top_Padding: 0,
+                bottom_Padding: 0,
+
+            }
+        }
+        if(getparam == "Collapible content"){
+            data = {
+                category:"Collapible_content",
+                heading: 'Collapible Content',
+                heading_Size: 2,
+                heading_Alignment: 2,
+                desktop_Content_Position: 1,
+                number_of_content: 2,
+                top_Padding: 0,
+                bottom_Padding: 0,
+
+
+                heading1: 'Content',
+                description1: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+                heading2: 'Content',
+                description2: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+                heading3: 'Content',
+                description3: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+                heading4: 'Content',
+                description4: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+                heading5: 'Content',
+                description5: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+                heading6: 'Content',
+                description6: 'Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.',
+                
+                
+
+            }   
+        }
+
         dispatch(AddSectionAction(data))
 
     }

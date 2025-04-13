@@ -4,7 +4,7 @@ import { WebSrnStorage, WebHost } from './Websrn';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { User_Data } from '../Requests/localStroagedata';
-import { checklogin } from '../../redux/actions/loginauth';
+// import { checklogin } from '../../redux/actions/loginauth';
 
 export const FirstTimeWebSrn = (props) => {
   const webSrnApi = useSelector((state) => state.Api.Web);
@@ -27,9 +27,9 @@ export const FirstTimeWebSrn = (props) => {
   }
 }
 
-if(User_Data != null){
-  dispatch(checklogin())
-}
+// if(User_Data != null){
+//   dispatch(checklogin())
+// }
 
 
   }, [webSrnApi, WebSrn]); // Add dependencies if needed

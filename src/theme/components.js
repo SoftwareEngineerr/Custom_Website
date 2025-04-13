@@ -47,7 +47,7 @@ export const Components = {
             }
         },
         previewImage:{
-            
+            width: '200px'
         },
         button:{
             position: 'absolute'

@@ -7,6 +7,7 @@ import MainInput from "./components/input"
 import { Input } from "./components/input/input"
 import { SliderComponent } from "./components/slider/slider"
 import NavTabs from "./components/tabs"
+import Fileimage from "./components/image/Fileimage"
 
 const CustomMenu = (props) => {
     const dispatch = useDispatch()
@@ -98,6 +99,19 @@ return props.data.map((item, ind) => (
     (item.feildtype == 'tabs' &&
     <Grid item  lg={item.lg} md={item.md} sm={item.sm} key={ind} xs={item.xs}>
     <NavTabs items={item.items} name={item.name}
+        key={ind}
+        onChange={(e)=>sliderdata( e , e)} 
+        id={props.id} 
+    
+    />
+
+    
+  </Grid>
+    )
+    ||
+    (item.feildtype == 'image' &&
+    <Grid item  lg={item.lg} md={item.md} sm={item.sm} key={ind} xs={item.xs}>
+    <Fileimage items={item.items} name={item.name}
         key={ind}
         onChange={(e)=>sliderdata( e , e)} 
         id={props.id} 
