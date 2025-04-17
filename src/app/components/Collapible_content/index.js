@@ -1,52 +1,52 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import CollapsibleContent from '../collape_component'
+import React, { memo, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import CollapsibleContent from '../collape_component';
 
-const Collapible_content = props => {
-          const obj = useSelector((state)=>state.Section[props.getid]);
-          const [data , setData ] = useState()
-        
-          
-    useEffect(()=>{
-              // alert(obj.number_of_content)
-              const customdata = []
-              for(var x=1; x<=obj.number_of_content; x++){
-                  let y = x;
-                  customdata.push(
-                    {
-                      heading: obj[`heading${x}`],
-                      Description: obj[`description${x}`]
-                    }
-                  
-                  )
-              }
-              setData(customdata)
-          },[obj.number_of_content ,
-            obj.heading1,
-            obj.description1,
-            obj.heading2,
-            obj.description2,
-            obj.heading3,
-            obj.description3,
-            obj.heading4,
-            obj.description4,
-            obj.heading5,
-            obj.description5,
-            obj.heading6,
-            obj.description6,
-          ])
-  return (
-    <div>
-      {
-        data && (
-          <CollapsibleContent data={data} />
-        )
-      }
-    </div>
-  )
-}
+/**
+ * Extracts structured data for the CollapsibleContent component
+ * based on a dynamic number of content items.
+ */
+const getStructuredContent = (sectionData = {}, count = 0) => {
+  if (!count || typeof count !== 'number') return [];
 
-Collapible_content.propTypes = {}
+  return Array.from({ length: count }, (_, index) => {
+    const i = index + 1;
+    return {
+      heading: sectionData[`heading${i}`] || '',
+      Description: sectionData[`description${i}`] || ''
+    };
+  });
+};
 
-export default Collapible_content
+const CollapibleContent = ({ getid }) => {
+  const sectionData = useSelector((state) => state.Section[getid]);
+
+  const content = useMemo(() => {
+    return getStructuredContent(sectionData, sectionData?.number_of_content);
+  }, [
+    sectionData?.number_of_content,
+    sectionData?.heading1,
+    sectionData?.heading2,
+    sectionData?.heading3,
+    sectionData?.heading4,
+    sectionData?.heading5,
+    sectionData?.heading6,
+    sectionData?.description1,
+    sectionData?.description2,
+    sectionData?.description3,
+    sectionData?.description4,
+    sectionData?.description5,
+    sectionData?.description6,
+  ]);
+
+  if (!content.length) return null;
+
+  return <CollapsibleContent data={content} />;
+};
+
+CollapibleContent.propTypes = {
+  getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+};
+
+export default memo(CollapibleContent);

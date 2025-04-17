@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { styled, Container, Box } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-
-
-import Sidebar from './sidebar/Sidebar';
 import { useDispatch, useSelector } from "react-redux";
-// import { Logout } from "../../redux/actions/loginauth";
-import Header from "../../components/header";
-// import { useSelector } from "react-redux";
+
+const Sidebar = lazy(()=>import('./sidebar/Sidebar'))
+const Header = lazy(()=>import('../../components/header'))
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -30,24 +27,10 @@ const FullLayout = () => {
   const [data , setData ] = useState();
   const dispatch = useDispatch()
 
-  // const permission = useSelector((state)=>state.login.permission)
-  // useEffect(()=>{
-  //   if(permission == true){
-  //     setChecker(<Outlet />);
-  //   }
-  //   else{
-  //     return naviage('/login')
-  //   }
-  // },[permission])
 
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  // const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
-
-
-
-
-
+  
   return (
     <>
     <Header />

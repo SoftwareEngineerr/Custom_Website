@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Grid, Typography } from '@mui/material'
 
@@ -50,6 +50,8 @@ const ProductListPage = props => {
   )
 }
 
-ProductListPage.propTypes = {}
+ProductListPage.propTypes = {
+    
+}
 
-export default ProductListPage
+export default memo(ProductListPage)

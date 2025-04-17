@@ -10,15 +10,22 @@ const AppInput = (props) => {
         name={props.name} 
         id={props.id} 
         placeholder={props.data}
-        required={props.required}
+        required={props.required == true ? true : false}
         type={props.type}
-        // onChange={(e)=>props.onChange( e , e)} 
-        // value={selectvalue}
         />
     </div>
   )
 }
 
-AppInput.propTypes = {}
+AppInput.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  data: PropTypes.string,
+  required: PropTypes.bool,
+  type: PropTypes.string
+}
 
 export default AppInput

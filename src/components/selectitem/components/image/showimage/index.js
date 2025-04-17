@@ -9,9 +9,9 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
 import Radio from '@mui/material/Radio'; // Import Radio component
 import RadioGroup from '@mui/material/RadioGroup'; // Import RadioGroup for handling the selection
+import axios from 'axios';
 import FormControlLabel from '@mui/material/FormControlLabel'; // Import FormControlLabel for the labels of radio buttons
 import { useDispatch } from 'react-redux';
 import { DynamicState } from '../../../../../redux/actions/addsection/addsection';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Avatar, Box, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
@@ -79,6 +79,8 @@ const FeaturedCollection = props => {
   )
 }
 
-FeaturedCollection.propTypes = {}
+FeaturedCollection.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default FeaturedCollection
+export default memo(FeaturedCollection)

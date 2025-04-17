@@ -5,12 +5,10 @@ import Tab from '@mui/material/Tab';
 import { useDispatch, useSelector } from 'react-redux';
 import { DynamicState } from '../../../../redux/actions/addsection/addsection';
 
-function samePageLinkNavigation(
-  event
-) {
+function samePageLinkNavigation(event) {
   if (
     event.defaultPrevented ||
-    event.button !== 0 || // ignore everything but left-click
+    event.button !== 0 || // only left-click
     event.metaKey ||
     event.ctrlKey ||
     event.altKey ||
@@ -26,7 +24,6 @@ function LinkTab(props) {
     <Tab
       component="a"
       onClick={(event) => {
-        // Routing libraries handle this, you can remove the onClick handle when using them.
         if (samePageLinkNavigation(event)) {
           event.preventDefault();
         }
@@ -38,36 +35,35 @@ function LinkTab(props) {
 }
 
 export default function NavTabs(props) {
-    const dispatch = useDispatch()
-    const data = useSelector((state)=>state.Section[props.id])
-    console.log(data.desktop_Content_Position)
-  const [value, setValue] = React.useState(data ? parseInt(data.desktop_Content_Position) : 0);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.Section[props.id]);
+
+  // Helper to safely parse value
+  const safeParse = (val) => {
+    const parsed = parseInt(val);
+    return isNaN(parsed) ? 0 : parsed;
+  };
+
+  const [value, setValue] = React.useState(() =>
+    safeParse(data?.[props.name] ?? data?.desktop_Content_Position)
+  );
 
   const handleChange = (event, newValue) => {
-    // event.type can be equal to focus with selectionFollowsFocus.
     if (
       event.type !== 'click' ||
-      (event.type === 'click' &&
-        samePageLinkNavigation(
-          event
-        ))
+      (event.type === 'click' && samePageLinkNavigation(event))
     ) {
-        console.log(props.id,newValue , props.name)
-        dispatch(DynamicState(props.id,newValue , props.name))
-        setValue(newValue);
-
-    //   props.onChange({
-    //         target:{
-    //             value: newValue,
-    //             name: props.name
-            
-        
-    //   }})
+      dispatch(DynamicState(props.id, newValue, props.name));
+      setValue(newValue);
     }
   };
-  React.useEffect(()=>{
-    setValue(parseInt(data[props.name]))
-  },[data])
+
+  React.useEffect(() => {
+    if (data) {
+      const newVal = safeParse(data[props.name]);
+      setValue(newVal);
+    }
+  }, [data, props.name]);
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -77,30 +73,25 @@ export default function NavTabs(props) {
         aria-label="nav tabs example"
         role="navigation"
         sx={{
-            background: '#eeeeee',
-            borderRadius: '9px',
-            // paddingLeft: '9px'
+          background: '#eeeeee',
+          borderRadius: '9px',
         }}
       >
-        {
-            props.items.map((item,ind)=>{
-                const getwidth = 100 / props.items.length;
-            
-             return (   <LinkTab
-                key={ind}
-                sx={{
-                    padding: '2px 5px',
-                    fontSize: "10px",
-                    minWidth: 'auto',
-                    width: `${getwidth}%`
-                }}
-                // active="yes"
-                label={item} />
-             )
-            }
-            )
-        }
-       
+        {props.items.map((item, ind) => {
+          const width = 100 / props.items.length;
+          return (
+            <LinkTab
+              key={ind}
+              label={item}
+              sx={{
+                padding: '2px 5px',
+                fontSize: '10px',
+                minWidth: 'auto',
+                width: `${width}%`,
+              }}
+            />
+          );
+        })}
       </Tabs>
     </Box>
   );

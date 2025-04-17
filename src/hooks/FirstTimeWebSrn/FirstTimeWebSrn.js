@@ -6,7 +6,7 @@ import axios from 'axios';
 import { User_Data } from '../Requests/localStroagedata';
 // import { checklogin } from '../../redux/actions/loginauth';
 
-export const FirstTimeWebSrn = (props) => {
+const FirstTimeWebSrn = (props) => {
   const webSrnApi = useSelector((state) => state.Api.Web);
   const dispatch = useDispatch();
   const WebSrn = window.location.hostname;
@@ -40,3 +40,4 @@ export const FirstTimeWebSrn = (props) => {
     </div>
   );
 };
+export default FirstTimeWebSrn

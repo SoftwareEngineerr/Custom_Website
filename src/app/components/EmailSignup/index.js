@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux';
 import { Box, Typography } from '@mui/material';
@@ -52,7 +52,7 @@ const EmailSignup = props => {
                         data={ <ArrowRightAlt
                             />}
                     />
-                    <AppInput type='email' name="email" placeholder="email"  required="true" />
+                    <AppInput type='email' name="email" placeholder="email"  required={true} />
                 </Box>
             </form>
         </Box>
@@ -60,6 +60,8 @@ const EmailSignup = props => {
   )
 }
 
-EmailSignup.propTypes = {}
+EmailSignup.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default EmailSignup
+export default memo(EmailSignup)

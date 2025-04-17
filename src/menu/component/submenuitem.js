@@ -51,7 +51,7 @@ const SubMenuitem = (props) => {
               showInput == true ? 
               <form onSubmit={submitform}>
                   <Box display='flex'>
-                      <Input placeholder='Value' required value={inputValue} onChange={(e)=>setInputValue(e.target.value)} />
+                      <Input placeholder='Value' required={true} value={inputValue} onChange={(e)=>setInputValue(e.target.value)} />
                       <Button type='submit'>
                           <AddBoxOutlined />
                       </Button>

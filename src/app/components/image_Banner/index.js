@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
@@ -90,6 +90,8 @@ const Image_Banner = props => {
 }
 
 
-Image_Banner.propTypes = {}
+Image_Banner.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default Image_Banner
+export default memo(Image_Banner)

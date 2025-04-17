@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { Box, Button, List, Typography } from "@mui/material";
 import { AddBoxOutlined, Delete, DeleteOutline, DragIndicatorOutlined } from "@mui/icons-material";
-import { Input } from "../components/selectitem/components/input/input.js";
+// import { Input } from "../components/selectitem/components/input/input.js";
 import SubMenuitem from "./component/submenuitem.js";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { DeleteRequest, PostRequest } from "../redux/actions/request/request.js";
+
+const Input = lazy(()=>import('../components/selectitem/components/input/input.js'))
+
+
 export default function CustomMenu  () {
 
   const [categories, setCategories] = useState(
@@ -176,7 +180,7 @@ const deleteMenuitem = async(getparam) => {
             showInput == true ? 
             <form onSubmit={submitform}>
                 <Box display='flex'>
-                    <Input placeholder='Value' required value={inputValue} onChange={(e)=>setInputValue(e.target.value)} />
+                    <Input placeholder='Value' required={true} value={inputValue} onChange={(e)=>setInputValue(e.target.value)} />
                     <Button type='submit'>
                         <AddBoxOutlined />
                     </Button>

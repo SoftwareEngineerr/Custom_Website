@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
@@ -73,6 +73,8 @@ const ImageWithText = props => {
   )
 }
 
-ImageWithText.propTypes = {}
+ImageWithText.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default ImageWithText
+export default memo(ImageWithText)

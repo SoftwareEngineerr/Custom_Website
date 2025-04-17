@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import { TextField } from '@mui/material';
 
-export  const Input = styled((props) => <TextField {...props} />)(({ theme }) => ({
+const Input = styled((props) => <TextField {...props} />)(({ theme }) => ({
   '& .MuiOutlinedInput-input::-webkit-input-placeholder': {
     color: theme.palette.text.secondary,
     opacity: '0.8',
@@ -17,3 +17,5 @@ export  const Input = styled((props) => <TextField {...props} />)(({ theme }) =>
   width:'100%',
 //   marginTop: '20px'
 }));
+
+export default Input;

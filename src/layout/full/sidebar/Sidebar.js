@@ -1,8 +1,8 @@
+import { lazy } from 'react';
 import { useMediaQuery, Box, Drawer } from '@mui/material';
-// import Logo from '../shared/logo/Logo';
-// import Logo from '../../../components/Logo/Logo';
-import SidebarItems from './SidebarItems';
-import { Upgrade } from './Updrade';
+
+const SidebarItems = lazy(()=>import('./SidebarItems/index'))
+const Updrade = lazy(()=>import('./Updrade'))
 
 const Sidebar = (props) => {
 

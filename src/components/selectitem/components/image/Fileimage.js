@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Grid, Input } from '@mui/material';
 import { DeleteOutlined, DriveFolderUploadOutlined } from '@mui/icons-material';
 import { useTheme } from '@emotion/react';
-import axios from 'axios';
 import CustomizedDialogs from './showimage';
 import { ShowLoader } from '../../../../redux/actions/showmodel'
+import axios from 'axios';
 
 const Fileimage = (props) => {
   const style = useTheme().palette.Components.uploadimage;
@@ -128,7 +128,7 @@ const Fileimage = (props) => {
                 style={{display: 'none'}}
                 value={imageName}
                 onChange={dummyOnchange}
-                required={props.required}
+                required={props.required == true ? true : false}          
               />
             </Box>
           </Box>

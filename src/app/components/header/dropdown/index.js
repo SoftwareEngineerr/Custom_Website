@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-export default function BasicMenu(props) {
+function BasicMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -25,7 +25,7 @@ export default function BasicMenu(props) {
             padding: '0'
         }}
       >
-        {props.name} 
+        {props.name && props.name} 
       </Button>
       <Menu
         id="basic-menu"
@@ -39,7 +39,7 @@ export default function BasicMenu(props) {
         {
             props.submenu && (props.submenu.length != 0 ? 'true' : 'false') ? (
                 props.submenu.map((item , ind)=>
-                <MenuItem onClick={handleClose}>{item.Name}</MenuItem>
+                <MenuItem key={ind} onClick={handleClose}>{item.Name}</MenuItem>
             )
         )
         :
@@ -49,3 +49,5 @@ export default function BasicMenu(props) {
     </div>
   );
 }
+
+export default React.memo(BasicMenu)

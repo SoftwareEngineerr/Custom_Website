@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
@@ -105,6 +105,8 @@ const CustomAppMulticolumn = props => {
   )
 }
 
-CustomAppMulticolumn.propTypes = {}
+CustomAppMulticolumn.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default CustomAppMulticolumn
+export default memo(CustomAppMulticolumn)

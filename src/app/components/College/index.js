@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux';
 import { Box, Grid, Typography } from '@mui/material';
@@ -76,6 +76,8 @@ const College = props => {
   )
 }
 
-College.propTypes = {}
+College.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default College
+export default memo(College)

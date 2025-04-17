@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
@@ -45,6 +45,8 @@ const RichText = (props) => {
   )
 }
 
-RichText.propTypes = {}
+RichText.propTypes = {
+    getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default RichText
+export default memo(RichText)

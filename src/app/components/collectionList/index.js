@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Avatar, Box, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux';
 
-const Collection_List = props => {
+const Collection_List = (props) => {
   const collection = useSelector((state)=>state.Section[props.getid]);
 
       const [numbers , setNumbers] = useState(collection && (Array.from({ length: collection.columns_on_desktop_count }, (_, index) => index + 1))); // Create an array [1, 2, 3, 4, 5]
     
         // console.log(collection)
-        const [columns_on_desktop , setColumns_on_desktop] = useState(12 / collection.columns_on_desktop.length)
+        const [columns_on_desktop , setColumns_on_desktop] = useState(12 / collection.columns_on_desktop && collection.columns_on_desktop.length)
         // console.log(Array.from({ length: collection.columns_on_desktop_count }, (_, index) => index + 1))
     
     useEffect(()=>{
@@ -28,15 +28,16 @@ const Collection_List = props => {
     >
         {
             collection && (
-                <>
+                <Box>
                     <Box
                  sx={{
                     ...(collection.Bottom_Padding && { paddingBottom: `${collection.padding_bottom_heading}px` })
                 }}  
                 
                     >
-                       
-                        <Typography variant= {
+                       {
+                        collection.heading_size &&
+                        <Typography variant={
                             collection.heading_size == 1 && ( 'h4' ) ||
                             collection.heading_size == 2 && ( 'h3' ) ||
                             collection.heading_size == 3 && ( 'h2' ) ||
@@ -45,14 +46,15 @@ const Collection_List = props => {
                         }>
                             {collection.heading} { collection.heading_Size}
                         </Typography>
+                       }
                     </Box>
                     <Box
                    
                     >
-                        <Grid container >
+                        <Grid container>
                             {
                                 numbers.map((item , ind)=>
-                                    <Grid key={ind} lg={columns_on_desktop} md={columns_on_desktop}
+                                    <Grid item key={ind} lg={columns_on_desktop} md={columns_on_desktop}
                                     sx={{
                                         padding: "5px"
                                     }}
@@ -72,7 +74,7 @@ const Collection_List = props => {
                             }
                         </Grid>
                     </Box>
-                </>
+                </Box>
             )
         }
 
@@ -81,6 +83,8 @@ const Collection_List = props => {
   )
 }
 
-Collection_List.propTypes = {}
+Collection_List.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default Collection_List
+export default memo(Collection_List)

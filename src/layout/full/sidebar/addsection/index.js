@@ -39,7 +39,7 @@ const  AddSection = (props) => {
         let data = {}
         if(getparam == "Header"){
             data = {
-                category:"header",
+                category:"Header",
                 data: "item",
                 Logo: 1,
                 // 1 Top Left
@@ -52,13 +52,13 @@ const  AddSection = (props) => {
         }
         if(getparam == "Slide Show"){
             data = {
-                category:"slideshow",
+                category:"SlideShow",
                 data: "item 1",
             }
         }
         if(getparam == "Featured collection"){
             data = {
-                category:"Featured_collection",
+                category:"FeaturedCollection",
                 heading:"Featured Collection",
                 bold:0,
                 italic: 0,
@@ -121,7 +121,7 @@ const  AddSection = (props) => {
         }
         if(getparam == "Image with Text"){
             data = {
-                category:"Image_With_Text",
+                category:"ImageWithText",
                 desktop_image_height: 0,
                 desktop_image_width: 0,
                 desktop_image_placement: 0,
@@ -172,7 +172,7 @@ const  AddSection = (props) => {
         }
         if(getparam == "Email signup"){
             data = {
-                category:"Email_signup",
+                category:"EmailSignup",
                 heading_Size: 2,
                 heading: 'Subscribe to our emails',
                 description: 'Be the first to know about new collections and exclusive offers.',
@@ -238,7 +238,7 @@ const  AddSection = (props) => {
         }
         if(getparam == "Multicolumn"){
             data = {
-                category:"Multicolumn",
+                category:"CustomAppMulticolumn",
                 heading: 'MutliColumns',
                 heading_Size: 2,
                 imagewidth: 2,

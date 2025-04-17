@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Slider from "react-slick";
 
 // Example of a simple carousel component
@@ -34,4 +34,4 @@ function SlideShow() {
   );
 }
 
-export default SlideShow;
+export default memo(SlideShow);

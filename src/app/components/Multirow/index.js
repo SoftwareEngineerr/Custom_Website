@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Box, Grid, Typography } from '@mui/material';
@@ -147,7 +147,7 @@ const Multirow = props => {
             >
                 {
                     data.map((item , ind)=>
-                        <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <Grid item key={ind} lg={12} md={12} sm={12} xs={12}>
                               
                             <Grid container
                             sx={{
@@ -242,6 +242,8 @@ const Multirow = props => {
     );
 }
 
-Multirow.propTypes = {}
+Multirow.propTypes = {
+      getid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+}
 
-export default Multirow;
+export default memo(Multirow);

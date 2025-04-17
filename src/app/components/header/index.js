@@ -1,244 +1,127 @@
-import React, { useEffect, useState } from "react";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { Grid } from '@mui/material';
-import { TempObj } from '../../../constant/temporaryObj';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import React, { useEffect, useState, useCallback, memo } from "react";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Tooltip,
+  Grid,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import AdbIcon from "@mui/icons-material/Adb";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import BasicMenu from "./dropdown";
-
-// Ensure pages and settings are initialized as arrays
-
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Header(props) {
-  const [pages , setPages] = useState();
+const Header = ({ getid }) => {
+  const [pages, setPages] = useState([]);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  // const [obj , setObj ] = useState(TempObj.header)
-  const obj = useSelector((state)=>state.Section[props.getid]);
-  const userToken = JSON.parse(sessionStorage.getItem('User_Data'))?.token || undefined;
+
+  const obj = useSelector((state) => state.Section[getid]);
   const url = useSelector((state) => state.Api);
+  const userToken = JSON.parse(sessionStorage.getItem('User_Data'))?.token;
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-    const showMenu = async() =>{
-      try {
-        const response = await axios.get(url.ShowMenu, {
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${userToken}`, // Ensure userToken is valid and present
-          },
-      });
-      if (response.status == 200) {
-  
-        function fixAndParse(inputString) {
-          // Step 1: Replace single quotes with double quotes
-          let fixedString = inputString.replace(/'/g, '"');
-      
-          // Step 2: Add double quotes around property names if missing
-          fixedString = fixedString.replace(/([{,])\s*([a-zA-Z0-9_]+)\s*:/g, '$1"$2":');
-      
-          // Step 3: Now, parse the corrected string
-          try {
-              const cusData = JSON.parse(fixedString);
-              // Return the first object in the array
-              console.log(cusData)
-              return cusData;
-          } catch (error) {
-              console.error("Invalid JSON format:", error);
-              return null;
-          }
-      }
-  
-      const getda = response.data.result
-      // console.log(getda)
-        setPages(response.data.result);
-      }
-    } catch (error) {
-      console.error(error);
-  }
-    }
-    useEffect(()=>{
-      showMenu()
-    },[])
-
-
-  // Helper function to safely map over arrays
-  const safeMap = (array) => {
+  const fetchMenuData = useCallback(async () => {
     try {
-      // Check if it's an array before mapping
-      if (Array.isArray(array)) {
-        return array.map((item) => (
-          // <MenuItem key={item} onClick={handleCloseNavMenu} >
-            <>
-            <Link 
-            // to={`/${item.Link}`} 
-            style={{ 
-              textAlign: 'center',
-              textDecoration: 'none',
-              color: 'black',
-              padding: '0'
-              }}
-            > 
-              <BasicMenu name={item.Name} submenu={item.submenu} />
-              {/* {item.Name} */}
-              </Link>
-            </>
-          // </MenuItem>
-        ));
-      } else {
-        console.warn('Expected an array but got:', array);
-        return [];
-      }
+      const res = await axios.get(url?.ShowMenu, {
+        headers: { Authorization: `Bearer ${userToken}` }
+      });
+      if (res.status === 200) setPages(res.data.result || []);
     } catch (error) {
-      console.error('Error while mapping:', error);
-      return [];
+      console.error("Menu fetch error:", error);
     }
+  }, [url, userToken]);
+
+  useEffect(() => {
+    if (userToken) fetchMenuData();
+  }, [fetchMenuData, userToken]);
+
+  const handleNavMenuOpen = useCallback((e) => setAnchorElNav(e.currentTarget), []);
+  const handleUserMenuOpen = useCallback((e) => setAnchorElUser(e.currentTarget), []);
+  const handleMenuClose = useCallback(() => {
+    setAnchorElNav(null);
+    setAnchorElUser(null);
+  }, []);
+
+  const renderLogo = () => {
+    if ([1, 2, 3].includes(obj?.Logo)) {
+      return (
+        <Grid container sx={obj.Logo === 3 ? { width: 'fit-content' } : {}}>
+          <Grid item xs={12} sx={obj.Logo === 2 ? {
+            textAlign: 'center', display: 'flex', justifyContent: 'center', width: '100%', position: 'absolute'
+          } : {}}>
+            <Typography variant="h6" component="a" href="#"
+              sx={{
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none'
+              }}
+            >
+              LOGO sami
+            </Typography>
+          </Grid>
+        </Grid>
+      );
+    }
+    return null;
   };
 
-  return (
-    obj != undefined && (
-    <AppBar position="static"
-    sx={
-      (obj != undefined && ( obj.background && {
-        background: obj.background,
-        ...(
-          obj.background == "white" ? {"color" : "black"} : null
+  const renderPageLinks = (arr) => (
+    Array.isArray(arr) ? arr.map((item, i) => (
+      <Box key={i}>
+        <Link style={{ textDecoration: 'none', color: 'black' }}>
+          <BasicMenu name={item?.Name || item} submenu={item?.submenu} />
+        </Link>
+      </Box>
+    )) : null
+  );
 
-        ),
-        boxShadow: "none"
-
-    })
-    ||
-    obj.color && {
-      color: obj.color,
-      boxShadow: "none"
-
-    }
-    )
-  }
+  return obj ? (
+    <AppBar
+      position="static"
+      sx={{
+        background: obj.background || 'inherit',
+        color: obj.background === 'white' ? 'black' : 'inherit',
+        boxShadow: 'none',
+      }}
     >
-      <Container maxWidth="xl" sx={{
-        boxShadow: "none"
-      }}>
-        <Toolbar disableGutters sx={{
-          boxShadow: "none"
-        }}>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-          {/* {
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
 
-          } */}
-    {
-        (obj.Logo == 1 || obj.Logo == 2 || obj.Logo == 3) && (
-        
-          <Grid container sx={
-            obj.Logo == 3 && {
-              width: "fit-content"
-            }
-            }>
-            <Grid item lg={12} md={12} sm={12}
-            sx={
-              
-                obj.Logo == 2 && 
-                  {
-              textAlign: 'center',
-              display: 'flex ',
-              justifyContent: 'center',
-              width: '100%',
-              position: 'absolute',
-              // background: 'blue',
-              marginTop: -'10px',
-            }
-          }
-            >
-            <Typography
-                  variant="h6"
-                  noWrap
-                  component="a"
-                  href="#app-bar-with-responsive-menu"
-                  sx={{
-                    mr: 2,
-                    display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                    
-                  }}
-                >
-                  LOGO sami
-                </Typography>
+          {renderLogo()}
 
-            </Grid>
-          </Grid>
-                )
-
-              }
-
+          {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
+            <IconButton size="large" onClick={handleNavMenuOpen} color="inherit">
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
               anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              onClose={handleMenuClose}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {safeMap(pages)}
+              {renderPageLinks(pages)}
             </Menu>
           </Box>
+
+          {/* Logo for Mobile */}
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -248,100 +131,56 @@ function Header(props) {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-            
-              
             }}
           >
             LOGO
           </Typography>
-          {
-          ( obj.Logo == 3 || obj.Logo == 4) && (
-           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } ,flexWrap: 'wrap', }}>
-            {safeMap(pages)}
-          </Box> 
+
+          {/* Desktop Menu */}
+          {[3, 4].includes(obj.Logo) && (
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexWrap: 'wrap' }}>
+              {renderPageLinks(pages)}
+            </Box>
           )}
-           {
-        (obj.Logo == 4) && (
-        
-          <Grid container>
-            <Grid item lg={12} md={12} sm={12}
-            sx={{
 
-            }}
-            >
-            <Typography
-                  variant="h6"
-                  noWrap
-                  component="a"
-                  href="#app-bar-with-responsive-menu"
-                  sx={{
-                    mr: 2,
-                    display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                  }}
-                >
-                  LOGO sami
-                </Typography>
+          {/* Logo for Type 4 */}
+          {obj.Logo === 4 && renderLogo()}
 
-            </Grid>
-          </Grid>
-                )
-
-              }
-
+          {/* User Avatar Menu */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleUserMenuOpen} sx={{ p: 0 }}>
+                <Avatar alt="User" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
-              id="menu-appbar"
               anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleMenuClose}
             >
-              {safeMap(settings)}
+              {renderPageLinks(settings)}
             </Menu>
           </Box>
         </Toolbar>
       </Container>
-      {
-        (obj.Logo == 1 ||  obj.Logo == 2) &&  (
-          <Box 
+
+      {/* Desktop Menu for Logo 1 & 2 */}
+      {[1, 2].includes(obj.Logo) && (
+        <Box
           sx={{
-            flexGrow: 1, 
-            display: { 
-              xs: 'none', 
-              md: 'flex', 
-              ...(obj.Logo == 2 && { 
-                display: 'flex', 
-                justifyContent: 'center' 
-              })
-            }
+            flexGrow: 1,
+            display: { xs: 'none', md: 'flex' },
+            ...(obj.Logo === 2 && { justifyContent: 'center' })
           }}
         >
-              {safeMap(pages)}
-            </Box>
-      )
-      }
+          {renderPageLinks(pages)}
+        </Box>
+      )}
     </AppBar>
-    )
-  );
-}
+  ) : null;
+};
 
-export default Header;
+
+
+export default memo(Header);

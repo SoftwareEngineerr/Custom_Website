@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import Form from "../../app/form";
+import React, { lazy, Suspense, useState } from "react";
 
+
+const Form = lazy(()=>import('../../app/form'))
 const DragAndDrop = () => {
 
 
   return (
-    <div>
-      <div>
+    <Suspense fallback={<>Loading...</>}>
         <Form />
-      </div>
-    </div>
+    </Suspense>
   );
 };
 
