@@ -1,6 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import Header from '../components/header';
-import Contact from '../components/contact'
 
 // Map of components
 const components = {

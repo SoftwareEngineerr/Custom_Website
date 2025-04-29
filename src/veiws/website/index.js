@@ -6,9 +6,11 @@ const DragAndDrop = () => {
 
 
   return (
-    <Suspense fallback={<>Loading...</>}>
-        <Form />
-    </Suspense>
+    <div>
+      <Suspense fallback={<>Loading...</>}>
+          <Form />
+      </Suspense>
+    </div>
   );
 };
 

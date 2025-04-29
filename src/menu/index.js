@@ -11,7 +11,7 @@ import { DeleteRequest, PostRequest } from "../redux/actions/request/request.js"
 const Input = lazy(()=>import('../components/selectitem/components/input/input.js'))
 
 
-export default function CustomMenu  () {
+export default function CustomMenu() {
 
   const [categories, setCategories] = useState(
 );

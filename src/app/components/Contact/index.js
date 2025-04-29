@@ -7,17 +7,14 @@ import CustomButton from '../button';
 
 const Contact = props => {
     const obj = useSelector((state)=>state.Section[props.getid]);
-    const [checker , setChecker ] = useState(obj)
-    console.log(props.getid,obj )
-    useEffect(()=>{
-        setChecker(obj)
-        console.log(obj)
-    },[obj])
-      
+   
+      useEffect(()=>{
+        alert('1')
+      },[obj])
   return (
     <>
         {
-            checker ?
+            obj ?
             <Box>
                 <Grid container sx={{
                         padding : `${obj.top_Padding ? obj.top_Padding : 0}px ${obj.bottom_Padding ? obj.bottom_Padding : 0}px`

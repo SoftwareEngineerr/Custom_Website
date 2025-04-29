@@ -3,74 +3,62 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { DynamicState, HeadingSize } from '../../redux/actions/addsection/addsection';
 
-export const Selector = (props)=> {
-  // const data = useSelector((state)=>state.Section[props.id])
-  const getid = props.id;
-  // alert(getid)
-    const data = useSelector((state)=>state.Section[props.id])
-  const [selectvalue, setSelectvalue] = React.useState(data != undefined ? data[props.name] : null);
-  const dispatch = useDispatch()
-
-  const handleChange = (event) => {
-    setSelectvalue(event.target.value);
-    // console.log([event.target.value , props.name])
-      // setInputValues((oldData)=> ({
-      //     ...oldData,
-      //     [getparam[1]]:getparam[0]
-      // })
-      // )
-      if(props.name == 'heading_size'){
-         dispatch(HeadingSize(props.id,event.target.value))
-      }
-      else{
-        console.log(props.id,event.target.value , props.name)
-        dispatch(DynamicState(props.id,event.target.value , props.name))
-
-      }
-
+const Selector = React.memo((props) => {
+  const { id, name, items, style, required } = props;
   
-    // props.GetSelectedValue([event.target.value , props.name]);
-  };
-  React.useEffect(()=>{
-    // console.log(data && data[props.name])
-    setSelectvalue(data != undefined ? data[props.name] : null)
-  },[data])
+  // Use selector to get data from Redux only when necessary
+  const data = useSelector((state) => state.Section[id]);
+  
+  // Initialize state only when data is available to avoid unnecessary updates
+  const [selectValue, setSelectValue] = React.useState(data ? data[name] : null);
 
-  React.useEffect(()=>{
-    // console.log(data && data[props.name])
-    setSelectvalue(data != undefined ? data[props.name] == 0 ? data[props.name]+1 : data[props.name] : null)
-  },[])
+  const dispatch = useDispatch();
+
+  const handleChange = React.useCallback((event) => {
+    const newValue = event.target.value;
+    setSelectValue(newValue);
+
+    if (name === 'heading_size') {
+      dispatch(HeadingSize(id, newValue));
+    } else {
+      dispatch(DynamicState(id, newValue, name));
+    }
+  }, [dispatch, id, name]);
+
+  React.useEffect(() => {
+    // Only update selectValue when data or name changes, avoiding redundant updates
+    if (data && data[name] !== undefined) {
+      setSelectValue(data[name] === 0 ? data[name] + 1 : data[name]);
+    }
+  }, [data, name]);
+
   return (
-    <Box 
-    sx={props.style || {}}
-    >
+    <Box sx={style || {}}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{props.name}</InputLabel>
+        <InputLabel id={`select-${id}`}>{name}</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={selectvalue}
-          label="Age"
+          labelId={`select-${id}`}
+          id={`select-${id}`}
+          value={selectValue || ''}
+          label={name}
           onChange={handleChange}
-          required={props.required == true ? true : false}
-          sx={
-            props.style && props.style
-          }
+          required={required || false}
+          sx={style}
         >
-            {
-                props.items &&(
-                props.items.map((item , ind)=>
-                <MenuItem key={ind} value={ind+1}>{item}</MenuItem>
-                )
-                )
-            }
+          {Array.isArray(items) &&
+            items.map((item, ind) => (
+              <MenuItem key={ind} value={ind + 1}>
+                {item}
+              </MenuItem>
+            ))}
         </Select>
       </FormControl>
     </Box>
   );
-}
+});
 
+export default Selector;

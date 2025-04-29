@@ -1,4 +1,4 @@
-import React, { lazy, memo, Suspense, useCallback, useEffect, useState } from 'react'
+import React, { lazy, memo, useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 
@@ -22,14 +22,14 @@ const MainInput = ({ name, id, onChange }) => {
     )
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <div>
             <Input
                 name={name}
                 id={String(id)} // <-- Convert id to string
                 onChange={handleChange}
                 value={selectvalue}
             />
-        </Suspense>
+        </div>
     )
 }
 

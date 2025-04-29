@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { Box } from '@mui/material'
@@ -29,4 +29,4 @@ const Loader = (props) => {
 
 Loader.propTypes = {}
 
-export default Loader
+export default memo(Loader)

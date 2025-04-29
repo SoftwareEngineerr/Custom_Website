@@ -1,12 +1,15 @@
 import { Box, Grid, Slider, Typography } from "@mui/material"
-import { useState } from "react"
+import { lazy, useState } from "react"
 import { useDispatch } from "react-redux"
 import { DynamicState, HeadingSize } from "../../redux/actions/addsection/addsection"
-import { Selector } from "../select"
 import MainInput from "./components/input"
 import { SliderComponent } from "./components/slider/slider"
-import NavTabs from "./components/tabs"
-import Fileimage from "./components/image/Fileimage"
+
+
+const Selector = lazy(()=>import('../select'))
+const NavTabs = lazy(()=>import('./components/tabs'))
+const Fileimage = lazy(()=>import('./components/image/Fileimage'))
+
 
 const CustomMenu = (props) => {
     const dispatch = useDispatch()

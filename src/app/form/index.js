@@ -3,14 +3,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SelectIndex } from '../../redux/actions/addsection/addsection';
 import ProductListPage from '../components/ProductListPage';
 import { UseItems } from './Hook/useItems';
+// import DynamicRender from './components/dynamicRender'
 
 const DynamicRender = lazy(()=> import('./components/dynamicRender'))
 
 const Form = props => {
     const dispatch = useDispatch();
     const [selectedItem, setSelectedItem] = useState(null);
-    const items = UseItems()
+    // const items = UseItems()
     const obj = useSelector((state)=>state.Section);
+    const PageChanger = useSelector((state) => state.PageChanger);
+    const [items, setItems] = useState(obj);
+    const [checker , setChecker ] = useState(0)
+  
+  useEffect(()=>{
+        setItems([])
+    },[PageChanger])
+
+
+
+    useEffect(()=>{
+        alert('welcome')
+      setItems(obj)
+      debugger
+
+    },[obj])
+
 
     // Handle drag start event
     const handleDragStart = (e, index) => {
@@ -32,9 +50,6 @@ const Form = props => {
         dispatch(SelectIndex(updatedItems));
     };
 
-    useEffect(()=>{
-        console.log(obj)
-    },[obj])
 
 
     // Handle drag over event
@@ -49,10 +64,12 @@ const Form = props => {
 
     return (
         <div>
-            
+            {
+
+            }
         {items != 'plp' && items != 'pdp' && items != '' ? 
-            Array.isArray(items) &&
-            items.map((item, index) => (
+            // Array.isArray(items) &&
+            obj.map((item, index) => (
                 <div
                     key={index}
                     draggable
@@ -99,4 +116,4 @@ const Form = props => {
 
 Form.propTypes = {};
 
-export default memo(Form);
+export default Form;

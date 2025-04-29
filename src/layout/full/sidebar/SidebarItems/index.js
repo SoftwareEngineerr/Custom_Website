@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Tabs, Tab, List } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';

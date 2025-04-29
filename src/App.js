@@ -20,13 +20,11 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Suspense fallback={<div>Loading...</div>}>
         {/* All lazy components must be inside Suspense */}
         <FirstTimeWebSrn />
         <Loader />
         <Popup />
         <div>{routing}</div>
-      </Suspense>
     </ThemeProvider>
   );
 };
